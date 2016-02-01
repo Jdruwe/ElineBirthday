@@ -22,10 +22,13 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <Button
-            android:id="@+id/content_start_btn_start_quiz"
+            android:id="@+id/content_start_btn_next"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:text="@string/start_quiz" />
 
     </RelativeLayout>

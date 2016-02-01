@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "be.jeroendruwe.elinebirthday"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -26,4 +26,5 @@ dependencies {
     compile 'com.android.support:design:23.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'hanks.xyz:smallbang-library:0.1.2'
+    compile 'com.github.deano2390:MaterialShowcaseView:1.0.6'
 }

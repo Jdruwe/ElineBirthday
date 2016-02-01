@@ -1,10 +1,8 @@
 package be.jeroendruwe.elinebirthday;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,12 +11,14 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import xyz.hanks.library.SmallBang;
 import xyz.hanks.library.SmallBangListener;
 
 public class StartActivity extends AppCompatActivity {
 
     private SmallBang mSmallBang;
+    private Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +27,38 @@ public class StartActivity extends AppCompatActivity {
 
         mSmallBang = SmallBang.attach2Window(this);
 
-        ImageView backgroundImage = (ImageView) findViewById(R.id.content_start_imv_background);
-        Picasso.with(this).load(R.drawable.eline).fit().centerCrop().into(backgroundImage);
+        final ImageView backgroundImage = (ImageView) findViewById(R.id.content_start_imv_background);
+        setBackground(backgroundImage, R.drawable.eline);
 
-        Button startQuiz = (Button) findViewById(R.id.content_start_btn_start_quiz);
-        startQuiz.setOnClickListener(new View.OnClickListener() {
+        next = (Button) findViewById(R.id.content_start_btn_next);
+
+        setShowCase(next);
+        setListeners();
+    }
+
+    private void setListeners() {
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addNumber(v);
             }
         });
-
     }
 
-    private void addNumber(final View view){
+    private void setShowCase(View view) {
+        new MaterialShowcaseView.Builder(this)
+                .setTarget(view)
+                .setDismissOnTouch(true)
+                .setMaskColour(R.color.colorPrimaryDark)
+                .setContentText(getString(R.string.intro))
+                .show();
+    }
+
+    private void setBackground(ImageView imageView, int resourceId) {
+        Picasso.with(this).load(resourceId).fit().centerCrop().into(imageView);
+    }
+
+    private void addNumber(final View view) {
         mSmallBang.bang(view, 100, new SmallBangListener() {
             @Override
             public void onAnimationStart() {
@@ -48,7 +66,8 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd() {
-
+                Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
+                startActivity(intent);
             }
         });
     }
