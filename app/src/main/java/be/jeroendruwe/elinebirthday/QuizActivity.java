@@ -1,5 +1,6 @@
 package be.jeroendruwe.elinebirthday;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -72,8 +73,13 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
     @Override
     public void onCorrectAnswerSelected() {
         currentQuestion++;
-        showQuestion(currentQuestion);
-        updateTitle();
+        if (currentQuestion != questionFragments.size()) {
+            showQuestion(currentQuestion);
+            updateTitle();
+        } else {
+            Intent intent = new Intent(getApplicationContext(), KeyActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void updateTitle() {

@@ -19,9 +19,12 @@ import android.widget.TextView;
 import be.jeroendruwe.elinebirthday.R;
 import be.jeroendruwe.elinebirthday.pojo.Answer;
 import be.jeroendruwe.elinebirthday.pojo.Question;
+import xyz.hanks.library.SmallBang;
+import xyz.hanks.library.SmallBangListener;
 
 public class QuestionFragment extends Fragment {
 
+    private SmallBang mSmallBang;
     private static final String ARGUMENT_QUESTION = "question";
     private Button verifyAnswer;
     private RadioGroup radioGroup;
@@ -71,7 +74,26 @@ public class QuestionFragment extends Fragment {
         verifyAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                verifyAnswer(v);
+            }
+        });
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                verifyAnswer.setEnabled(true);
+            }
+        });
+    }
+
+    private void verifyAnswer(final View view) {
+        mSmallBang.bang(view, 100, new SmallBangListener() {
+            @Override
+            public void onAnimationStart() {
+            }
+
+            @Override
+            public void onAnimationEnd() {
                 int radioButtonID = radioGroup.getCheckedRadioButtonId();
                 View radioButton = radioGroup.findViewById(radioButtonID);
                 int index = radioGroup.indexOfChild(radioButton);
@@ -83,13 +105,6 @@ public class QuestionFragment extends Fragment {
                     //Incorrect
                     handleFailure();
                 }
-            }
-        });
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                verifyAnswer.setEnabled(true);
             }
         });
     }
@@ -128,6 +143,7 @@ public class QuestionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question, viewGroup, false);
+        mSmallBang = SmallBang.attach2Window(getActivity());
 
         question = getArguments().getParcelable(ARGUMENT_QUESTION);
 

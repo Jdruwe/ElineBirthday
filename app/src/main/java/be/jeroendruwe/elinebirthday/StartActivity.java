@@ -40,7 +40,7 @@ public class StartActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNumber(v);
+                startQuiz(v);
             }
         });
     }
@@ -58,7 +58,7 @@ public class StartActivity extends AppCompatActivity {
         Picasso.with(this).load(resourceId).fit().centerCrop().into(imageView);
     }
 
-    private void addNumber(final View view) {
+    private void startQuiz(final View view) {
         mSmallBang.bang(view, 100, new SmallBangListener() {
             @Override
             public void onAnimationStart() {

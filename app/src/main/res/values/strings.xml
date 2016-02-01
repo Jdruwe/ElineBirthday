@@ -11,4 +11,7 @@
     <string name="wrong_answer">Meende gij dees!</string>
     <string name="next">Volgende</string>
     <string name="try_again">Probeer opnieuw</string>
+    <string name="title_activity_key">KeyActivity</string>
+    <string name="lock_key">159</string>
+    <string name="congratulations">Gefeliciteerd!!!</string>
 </resources>
