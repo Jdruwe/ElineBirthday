@@ -1,13 +1,10 @@
 package be.jeroendruwe.elinebirthday;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +17,9 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
 
     private List<QuestionFragment> questionFragments;
 
+    private final String STATE_QUESTION = "state_question";
+    private int currentQuestion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,20 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
         setSupportActionBar(toolbar);
 
         setupQuestions();
-        showQuestion(0);
+
+        if (savedInstanceState != null) {
+            int question = savedInstanceState.getInt(STATE_QUESTION);
+            showQuestion(question);
+        } else {
+            showQuestion(0);
+        }
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt(STATE_QUESTION, currentQuestion);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     private void setupQuestions() {
@@ -56,6 +69,6 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
 
     @Override
     public void onCorrectAnswerSelected() {
-        showQuestion(1);
+        showQuestion(currentQuestion + 1);
     }
 }

@@ -30,7 +30,7 @@ public class QuestionFragment extends Fragment {
     private OnCorrectAnswerSelectedListener fragmentCallback;
 
     public interface OnCorrectAnswerSelectedListener {
-        public void onCorrectAnswerSelected();
+        void onCorrectAnswerSelected();
     }
 
     @Override
@@ -55,11 +55,9 @@ public class QuestionFragment extends Fragment {
 
     public static QuestionFragment newInstance(Question question) {
         QuestionFragment myFragment = new QuestionFragment();
-
         Bundle args = new Bundle();
         args.putParcelable(ARGUMENT_QUESTION, question);
         myFragment.setArguments(args);
-
         return myFragment;
     }
 
@@ -73,9 +71,12 @@ public class QuestionFragment extends Fragment {
         verifyAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
 
-                if (question.getAnswers().get(checkedRadioButtonId - 1).isCorrect()) {
+                int radioButtonID = radioGroup.getCheckedRadioButtonId();
+                View radioButton = radioGroup.findViewById(radioButtonID);
+                int index = radioGroup.indexOfChild(radioButton);
+
+                if (question.getAnswers().get(index).isCorrect()) {
                     //Correct
                     handleSuccess();
                 } else {
