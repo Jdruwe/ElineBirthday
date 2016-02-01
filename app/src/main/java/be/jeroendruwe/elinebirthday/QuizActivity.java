@@ -20,22 +20,23 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
     private final String STATE_QUESTION = "state_question";
     private int currentQuestion;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         setupQuestions();
 
         if (savedInstanceState != null) {
-            int question = savedInstanceState.getInt(STATE_QUESTION);
-            showQuestion(question);
+            currentQuestion = savedInstanceState.getInt(STATE_QUESTION);
+            showQuestion(currentQuestion);
         } else {
             showQuestion(0);
         }
-
     }
 
     @Override
@@ -61,6 +62,7 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
     }
 
     private void showQuestion(int question) {
+        updateTitle();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.content_quiz_fl_question, questionFragments.get(question));
@@ -69,6 +71,14 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
 
     @Override
     public void onCorrectAnswerSelected() {
-        showQuestion(currentQuestion + 1);
+        currentQuestion++;
+        showQuestion(currentQuestion);
+        updateTitle();
+    }
+
+    private void updateTitle() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Vraag " + (currentQuestion + 1) + "/" + questionFragments.size());
+        }
     }
 }
