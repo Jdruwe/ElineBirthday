@@ -90,6 +90,7 @@ public class QuestionFragment extends Fragment {
         mSmallBang.bang(view, 100, new SmallBangListener() {
             @Override
             public void onAnimationStart() {
+
             }
 
             @Override

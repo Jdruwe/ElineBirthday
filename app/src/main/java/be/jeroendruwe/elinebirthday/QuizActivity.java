@@ -78,6 +78,7 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
             updateTitle();
         } else {
             Intent intent = new Intent(getApplicationContext(), KeyActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     }
