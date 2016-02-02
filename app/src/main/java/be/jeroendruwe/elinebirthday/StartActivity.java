@@ -28,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
         mSmallBang = SmallBang.attach2Window(this);
 
         final ImageView backgroundImage = (ImageView) findViewById(R.id.content_start_imv_background);
-        setBackground(backgroundImage, R.drawable.eline);
+        setBackground(backgroundImage, R.drawable.eline_crown);
 
         next = (Button) findViewById(R.id.content_start_btn_next);
 
