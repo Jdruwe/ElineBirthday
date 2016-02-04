@@ -55,10 +55,73 @@ public class QuizActivity extends AppCompatActivity implements QuestionFragment.
                     add(new Answer("Bernadette", false));
                 }})));
 
-        questionFragments.add(QuestionFragment.newInstance(new Question("Question 2",
+        questionFragments.add(QuestionFragment.newInstance(new Question("Tijdens welke serie/film valt Eline in slaap?",
                 new ArrayList<Answer>() {{
-                    add(new Answer("Answer 1", false));
-                    add(new Answer("Answer 2", true));
+                    add(new Answer("Walking Dead", false));
+                    add(new Answer("Star Wars", false));
+                    add(new Answer("Brooklyn Nine-Nine", false));
+                    add(new Answer("Allemaal", true));
+                }})));
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("Naar welk land trekken Eline en Jeroen deze zomer op vakantie?",
+                new ArrayList<Answer>() {{
+                    add(new Answer("Syrië", false));
+                    add(new Answer("Zweden", true));
+                    add(new Answer("Irak ", false));
+                }})));
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("Lachen gieren ...",
+                new ArrayList<Answer>() {{
+                    add(new Answer("Blazen", true));
+                    add(new Answer("Brullen", false));
+                }})));
+
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("Moeilijkste instrument?",
+                new ArrayList<Answer>() {{
+                    add(new Answer("Gitaar", true));
+                    add(new Answer("Dwarsfluit", false));
+                }})));
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("Wie behaalde de laatste plaats bij het spelen van Phase 10?",
+                new ArrayList<Answer>() {{
+                    add(new Answer("Jeroen", false));
+                    add(new Answer("Danny", true));
+                    add(new Answer("Eline", false));
+                    add(new Answer("Kristiane", false));
+                }})));
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("Heeft Jeroen \"The Broken Circle Breakdown\" al gezien?",
+                new ArrayList<Answer>() {{
+                    add(new Answer("Ja", true));
+                    add(new Answer("Ja", true));
+                }})));
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("Tijdens welke eeuw is de Ezaartmolen gebouwd?",
+                new ArrayList<Answer>() {{
+                    add(new Answer("20e v.Chr", false));
+                    add(new Answer("18e", false));
+                    add(new Answer("19e", true));
+                    add(new Answer("20e", false));
+                    add(new Answer("21e", false));
+                }})));
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("In welke stad in Wallonië hebben Jeroen en Eline vorig jaar een weekendje gelogeerd?",
+                new ArrayList<Answer>() {{
+                    add(new Answer("Chimay", false));
+                    add(new Answer("Spa", false));
+                    add(new Answer("Bouillon ", false));
+                    add(new Answer("Durbuy", true));
+                    add(new Answer("Luik", false));
+                }})));
+
+        questionFragments.add(QuestionFragment.newInstance(new Question("In welke stad gaan Eline en Jeroen deze zomer naar ColdPlay kijken?",
+                new ArrayList<Answer>() {{
+                    add(new Answer("Amsterdam", true));
+                    add(new Answer("Rotterdam", false));
+                    add(new Answer("Den Haag ", false));
+                    add(new Answer("Utrecht", false));
+                    add(new Answer("Maastricht", false));
                 }})));
     }
 

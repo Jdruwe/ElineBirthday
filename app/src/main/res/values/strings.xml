@@ -7,7 +7,7 @@
     <string name="verify_answer">Controleer antwoord</string>
     <string name="success">Succes</string>
     <string name="failure">Fout</string>
-    <string name="answered_correctly">Je hebt de vraagt correct beantwoord!</string>
+    <string name="answered_correctly">Je hebt de vraag correct beantwoord!</string>
     <string name="wrong_answer">Meende gij dees!</string>
     <string name="next">Volgende</string>
     <string name="try_again">Probeer opnieuw</string>
