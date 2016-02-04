@@ -21,6 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/lock_key"
-        android:textSize="45sp" />
+        android:textSize="112sp" />
 
 </RelativeLayout>

@@ -28,7 +28,8 @@
             android:name=".KeyActivity"
             android:label="@string/title_activity_key"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

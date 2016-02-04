@@ -46,7 +46,7 @@ public class KeyActivity extends AppCompatActivity {
                     public void run() {
                         lockKey.setVisibility(View.VISIBLE);
                     }
-                }, 1000);
+                }, 500);
             }
         });
     }

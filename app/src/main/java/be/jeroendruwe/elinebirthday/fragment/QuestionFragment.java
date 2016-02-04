@@ -76,6 +76,7 @@ public class QuestionFragment extends Fragment {
         verifyAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                verifyAnswer.setEnabled(false);
                 verifyAnswer(v);
             }
         });
@@ -130,6 +131,7 @@ public class QuestionFragment extends Fragment {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+        verifyAnswer.setEnabled(true);
     }
 
     private void handleSuccess() {
