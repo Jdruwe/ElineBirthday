@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -90,22 +92,27 @@ public class QuestionFragment extends Fragment {
         mSmallBang.bang(view, 100, new SmallBangListener() {
             @Override
             public void onAnimationStart() {
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int radioButtonID = radioGroup.getCheckedRadioButtonId();
+                        View radioButton = radioGroup.findViewById(radioButtonID);
+                        int index = radioGroup.indexOfChild(radioButton);
 
+                        if (question.getAnswers().get(index).isCorrect()) {
+                            //Correct
+                            handleSuccess();
+                        } else {
+                            //Incorrect
+                            handleFailure();
+                        }
+                    }
+                }, 500);
             }
 
             @Override
             public void onAnimationEnd() {
-                int radioButtonID = radioGroup.getCheckedRadioButtonId();
-                View radioButton = radioGroup.findViewById(radioButtonID);
-                int index = radioGroup.indexOfChild(radioButton);
 
-                if (question.getAnswers().get(index).isCorrect()) {
-                    //Correct
-                    handleSuccess();
-                } else {
-                    //Incorrect
-                    handleFailure();
-                }
             }
         });
     }

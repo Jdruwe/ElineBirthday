@@ -2,6 +2,8 @@ package be.jeroendruwe.elinebirthday;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
@@ -62,12 +64,18 @@ public class StartActivity extends AppCompatActivity {
         mSmallBang.bang(view, 100, new SmallBangListener() {
             @Override
             public void onAnimationStart() {
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
+                        startActivity(intent);
+                    }
+                }, 500);
             }
 
             @Override
             public void onAnimationEnd() {
-                Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
-                startActivity(intent);
+
             }
         });
     }
